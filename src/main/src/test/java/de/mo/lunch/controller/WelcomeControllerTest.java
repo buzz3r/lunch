@@ -3,8 +3,10 @@ package de.mo.lunch.controller;
 import de.mo.lunch.controller.WelcomeController;
 import de.mo.lunch.model.Message;
 import de.mo.lunch.service.MessageService;
+import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
@@ -12,6 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -58,6 +62,6 @@ public class WelcomeControllerTest {
     public void addMessageShouldCallMessageServiceSaveToSaveMessage() {
         String message = "Hello Friend";
         welcomeController.addMessage(new ExtendedModelMap(), message);
-        verify(messageService).save(any());
+        verify(messageService).save(message);
     }
 }

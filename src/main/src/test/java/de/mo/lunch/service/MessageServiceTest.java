@@ -4,6 +4,7 @@ import de.mo.lunch.Mapper.MessageMapper;
 import de.mo.lunch.model.Message;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,9 +43,11 @@ public class MessageServiceTest {
 
     @Test
     public void saveShouldCallMessageMapperInsert() {
+        ArgumentCaptor<Message> argumentCaptor = ArgumentCaptor.forClass(Message.class);
         String message = "Hello";
         messageService.save(message);
-        verify(messageMapper).insert(any());
+        verify(messageMapper).insert(argumentCaptor.capture());
+        assertEquals(message, argumentCaptor.getValue().getMessage());
     }
 
 }
