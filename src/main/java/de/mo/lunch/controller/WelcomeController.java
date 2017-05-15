@@ -1,7 +1,6 @@
 package de.mo.lunch.controller;
 
 
-import de.mo.lunch.model.Message;
 import de.mo.lunch.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

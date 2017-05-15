@@ -18,7 +18,7 @@ public interface MessageMapper {
             "INSERT INTO message (message) " +
                     "VALUES (#{message})"
     )
-    @Options(keyProperty = "id", keyColumn = "id", useGeneratedKeys = true)
+    @Options(keyColumn = "id", useGeneratedKeys = true)
     void insert(Message message);
 
 }
