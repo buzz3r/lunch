@@ -2,16 +2,12 @@ package de.mo.lunch.model;
 
 public class Message {
 
-    private int id;
+    private final int id;
 
     private String message;
 
     public Message(int id, String message) {
         this.id = id;
-        this.message = message;
-    }
-
-    public Message(String message) {
         this.message = message;
     }
 
@@ -21,9 +17,5 @@ public class Message {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

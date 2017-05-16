@@ -9,16 +9,12 @@ import org.mockito.ArgumentCaptor;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.*;
 
-/**
- * Created by moritz on 13/05/2017.
- */
 public class MessageServiceTest {
 
     private MessageMapper messageMapper;
@@ -32,13 +28,13 @@ public class MessageServiceTest {
 
     @Test
     public void getAllShouldCallMessageMapperFindAll() {
-        Message message = new Message("Hello");
-        when(messageMapper.findAll()).thenReturn(Arrays.asList(message));
+        List<Message> expectedMessages = Arrays.asList(new Message(0, "Hello"));
+        when(messageMapper.findAll()).thenReturn(expectedMessages);
 
         List<Message> messages = messageService.findAll();
         verify(messageMapper).findAll();
 
-        assertThat(messages, hasItem(message));
+        assertThat(expectedMessages, equalTo(messages));
     }
 
     @Test

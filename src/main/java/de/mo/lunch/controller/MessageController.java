@@ -11,24 +11,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
-public class WelcomeController {
+public class MessageController {
 
     private final MessageService messageService;
 
     @Autowired
-    public WelcomeController(MessageService messageService) {
+    public MessageController(MessageService messageService) {
         this.messageService = messageService;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String welcome(Model model) {
+    public String showMessages(Model model) {
         model.addAttribute("messages", messageService.findAll());
-        return "welcome";
+        return "showMessages";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String addMessage(Model model, @RequestParam("message") String message) {
         messageService.save(message);
-        return welcome(model);
+        return showMessages(model);
     }
 }

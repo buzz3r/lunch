@@ -19,13 +19,12 @@ import static org.junit.Assert.assertThat;
 @SpringBootTest
 public class MessageMapperTest {
 
-
     @Autowired
     MessageMapper messageMapper;
 
     @Test
     public void findAllMessagesShouldReturnAllMessages() {
-        Message message = new Message("Hello");
+        Message message = new Message(0, "Hello");
         messageMapper.insert(message);
 
         List<Message> messages = messageMapper.findAll();

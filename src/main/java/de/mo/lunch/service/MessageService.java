@@ -23,6 +23,6 @@ public class MessageService {
 
     public void save(String message) {
 
-        this.messageMapper.insert(new Message(message));
+        this.messageMapper.insert(new Message(0, message));
     }
 }

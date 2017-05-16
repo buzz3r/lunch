@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface MessageMapper {
 
-    @Select("SELECT * FROM MESSAGE")
+    @Select("SELECT * FROM message")
     List<Message> findAll();
 
     @Insert(

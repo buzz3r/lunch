@@ -9,7 +9,8 @@ public class MessageTest {
 
     @Test
     public void testCreateMessage() {
-        Message message = new Message("Hello");
+        Message message = new Message(0, "Hello");
+        assertEquals(0, message.getId());
         assertEquals("Hello", message.getMessage());
     }
 
